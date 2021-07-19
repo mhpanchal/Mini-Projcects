@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Graphical Shapes using HTML Canvas</title>
+    <style>
+      canvas {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="400">
+    </canvas>
+    <script>
+      var canvas = document.querySelector("#myCanvas");
+      var context = canvas.getContext("2d");
+
+      var number = 0;
+      var scale = 10;
+      
+   
+      function draw()
+      {
+	  var angle = number * 0.5;
+          var radius = scale * Math.sqrt(number);
+          var posX = radius * Math.sin(angle) + 200;
+          var posY = radius * Math.cos(angle) + 200;
+
+	  context.fillStyle = 'rgb(' + (radius % 256) + ', 150, 150)';
+          context.strokeStyle = 'black';
+          context.beginPath();
+          context.arc(posX, posY, 7, 0, 2 * Math.PI);
+          context.fill();
+          context.stroke();
+
+	  number++;
+      }
+
+      function animate()
+      {
+		draw();
+		if(number > 300)
+		{
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			number = 0;
+		}
+      			requestAnimationFrame(animate);
+      }
+
+      animate();
+
+
+    </script>
+  </body>
+</html>
