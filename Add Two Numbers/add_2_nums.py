@@ -26,12 +26,15 @@ def sum_list(l1, l2):
                 carry = 1
 
         elif l1[i] + l2[i] < 9:
-            if carry == 0 :
+            if carry == 0:
                 lst.append(l1[i] + l2[i])
-            else :
+            else:
                 lst.append(l1[i] + l2[i] + 1)
 
             carry = 0
+
+    if carry == 1:
+        lst.append(1)
 
     return lst
 
