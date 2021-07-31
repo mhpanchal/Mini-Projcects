@@ -4,7 +4,7 @@ def encrypt(plain_text, key):
     for i in plain_text:
 
         if i.isupper():
-            encrypted_text += key[alpha.find(i)].upper()
+            encrypted_text += key[alpha.find(i)]
 
         elif i.islower():
             encrypted_text += key[alpha.find(i.upper())].lower()
